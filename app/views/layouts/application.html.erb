@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="ja">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body id="application">
+    <div id="contents" class="container-fluid">
+      <div class="row">
+        <header class="hidden-lg hidden-md" id="sm_header">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="hum-menu">
+                <a class="menu-trigger" href="javascript:void(0)">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </a>
+              </div>
+              <div class="navbar-header text-center">
+                <span class="navbar-brand nav_title_custom">
+                  発見型プロセスマネジメント
+                </span>
+              </div>
+              <div class="btn-logout-area">
+                <%= link_to "ログアウト", logout_sessions_path , method: :put, class: "btn btn-logout btn-sm" %>
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <div id="main" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+          <%= render partial: 'shared/flashmessage' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" id="session_login">
+  <%= form_for(:session, url: login_sessions_path, html:{ class:"form-horizontal center-block" }) do |f| %>
+    <%= render partial: 'shared/flashmessage' %>
+    <div class="form-group text-left">
+      <label class="control-label col-sm-2">ID</label>
+        <div class="col-sm-offset-1 col-sm-9">
+          <!-- account -->
+          <%= f.text_field :account, placeholder: 'Account', required: "true", class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2 text-left">PASSWORD</label>
+      <div class="col-sm-offset-1 col-sm-9">
+        <!-- password -->
+        <%= f.password_field :password, placeholder: 'パスワード', required: "true", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="text-center">
+        <button type="submit" class="btn btn-default">login</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="manage_staff_new_page">
+  <div class="title-block">
+    <div class="title-label">
+    </div>
+  </div>
+
+  <%= form_for @subject do |f| %>
+  <div class="row--flex row--flex--sm input-block">
+
+      <div class="col-sm-5 input-item">
+        <p class="input-label">
+          <span class="glyphicon glyphicon-bookmark"></span> Subject name
+        </p>
+        <%= f.text_field :name, class: 'form-control' %>
+        <p class="input-label">
+          <span class="glyphicon glyphicon-bookmark"></span> Student ID
+        </p>
+        <%= f.text_field :student_id, class: 'form-control' %>
+
+      </div>
+
+      <div class="col-sm-2 input-btn-block">
+        <%= f.button "登録", :class => "btn btn-primary btn-lg input-btn" %>
+      </div>
+
+    </div>
+    <% end %>
+</div>
+</body>
+</html>

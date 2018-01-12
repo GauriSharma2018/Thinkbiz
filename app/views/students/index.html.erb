@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="manage_team_page">
+  <div class="title-block">
+    <div class="title-label">
+    </div>
+  </div>
+  <% if current_account.admin? %>
+    <div class="form-group">
+      <%= link_to "New Student", new_student_path, :class => "btn btn-success" %>
+    </div>
+  <% end %>
+  <div class="table-block">
+    <table class="table table-bordered">
+      <colgroup>
+        <col class="col-team">
+        <col class="col-staff">
+        <col class="col-edit">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Student name</th>
+          <th>subject id </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td class="team-name"><%= student.name %></td>
+            <td>
+              <% student.subjects.each do |subject| %>
+                <%= subject.name %><br>
+              <% end %>
+            </td>
+            <% if current_account.admin? %>
+              <td class="text-center">
+                <div class="edit-buttons">
+                  <div class="team-edit-button">
+                    <%= link_to "修正する", edit_student_path(student),:class => "btn btn-primary btn-block" %>
+                    <%= link_to "削除", student_path(student), class: "btn btn-danger btn-block", :data => {:confirm => "削除してよろしいですか？",:method => "delete"} %>
+                  </div>
+                </div>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
